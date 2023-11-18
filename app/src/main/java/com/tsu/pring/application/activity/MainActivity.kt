@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 	private val viewModel by viewModel<MainActivityViewModel>()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
+		setTheme(R.style.Theme_Pring)
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
 		navigatorHolder.setNavigator(navigator)

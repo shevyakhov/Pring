@@ -3,4 +3,6 @@
 	<string name="home">Home</string>
 	<string name="stats">Statistics</string>
 	<string name="prediction">Prediction</string>
+    <string name="search">Найти криптовалюту</string>
+    <string name="crypto_list">Список криптовалют</string>
 </resources>

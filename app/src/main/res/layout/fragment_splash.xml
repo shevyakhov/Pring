@@ -3,9 +3,9 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<TextView
+	<ImageView
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:text="splash" />
+		android:background="@drawable/splash_screen_image"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

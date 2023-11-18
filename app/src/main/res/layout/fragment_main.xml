@@ -27,8 +27,10 @@
 			android:paddingVertical="3dp"
 			android:visibility="visible"
 			app:itemIconSize="25dp"
-			app:labelVisibilityMode="labeled"
+			app:labelVisibilityMode="unlabeled"
 			app:layout_constraintBottom_toBottomOf="parent"
+			app:backgroundTint="@color/primary"
+			app:itemIconTint="@color/white"
 			app:menu="@menu/menu_main" />
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

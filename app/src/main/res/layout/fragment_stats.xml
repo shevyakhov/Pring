@@ -3,10 +3,114 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	tools:context=".features.stats.ui.StatsFragment">
 
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:text="@string/stats" />
+	<EditText
+		android:id="@+id/search_text_field"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="25dp"
+		android:layout_marginEnd="16dp"
+		android:background="@drawable/search_text_field_style"
+		android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
+		android:drawablePadding="8dp"
+		android:drawableTint="@color/white"
+		android:hint="@string/search"
+		android:isScrollContainer="false"
+		android:minHeight="48dp"
+		android:padding="8dp"
+		android:textColorHint="@color/white"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<LinearLayout
+		android:id="@+id/stats_crypto_info_1"
+		android:layout_width="0dp"
+		android:layout_height="60dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginEnd="4dp"
+		android:background="@drawable/house_crypto_info_style"
+		android:gravity="center"
+		android:orientation="horizontal"
+		app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/search_text_field">
+
+		<ImageView
+			android:id="@+id/crypto_icon_1"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.8"
+			android:padding="10dp"
+			tools:src="@tools:sample/avatars" />
+
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1.2"
+			android:gravity="center_vertical"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/crypto_full_name_1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="bottom"
+				android:text="TextView"
+				android:textColor="@color/black"
+				android:textSize="18dp"
+				android:textStyle="bold"
+				app:lineHeight="16dp" />
+
+			<TextView
+				android:id="@+id/crypto_name_1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="0.5"
+				android:text="TextView"
+				android:textColor="@color/black" />
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/linearLayout"
+		android:layout_width="0dp"
+		android:layout_height="60dp"
+		android:layout_marginStart="4dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginEnd="8dp"
+		android:background="@drawable/house_crypto_info_style"
+		android:gravity="center"
+		android:orientation="vertical"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/stats_crypto_info_1"
+		app:layout_constraintTop_toBottomOf="@+id/search_text_field">
+
+		<TextView
+			android:id="@+id/textView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:gravity="bottom|center_horizontal"
+			android:text="TextView"
+			android:textColor="@color/black"
+			android:textSize="20dp"
+			android:textStyle="bold" />
+
+		<TextView
+			android:id="@+id/textView2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.5"
+			android:gravity="center_horizontal|top"
+			android:text="TextView"
+			android:textColor="@color/black" />
+	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
