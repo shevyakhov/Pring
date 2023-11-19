@@ -5,4 +5,11 @@
 	<string name="prediction">Prediction</string>
     <string name="search">Найти криптовалюту</string>
     <string name="crypto_list">Список криптовалют</string>
+
+	<!-- Строки для прототипа приложения -->
+	<string name="full_name_of_crypto">Название</string>
+	<string name="abbrev_name">Аббревиатура</string>
+	<string name="crypto_price">Цена</string>
+	<string name="last_behaviour_info">%0.85031</string>
+	
 </resources>

@@ -3,6 +3,7 @@ package com.tsu.pring.libraries.modules
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
 import com.tsu.pring.application.activity.presentation.MainActivityViewModel
+import com.tsu.pring.data.rest.RestWorker
 import com.tsu.pring.libraries.modules.GlobalNavigatorName.GLOBAL
 import com.tsu.pring.libraries.modules.MainNavigatorName.MAIN
 import com.tsu.pring.libraries.navigators.GlobalRouter
@@ -37,6 +38,7 @@ val AppModule = module {
 	single(named(MAIN)) { get<Cicerone<Router>>(named(MAIN)).getNavigatorHolder() }
 	single<MainRouter> { MainRouterImpl(get(named(MAIN))) }
 
+	single { RestWorker() }
 
 	viewModel { MainActivityViewModel(navigator = get()) }
 }

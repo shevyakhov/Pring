@@ -61,7 +61,7 @@
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:gravity="bottom"
-				android:text="TextView"
+				android:text="@string/full_name_of_crypto"
 				android:textColor="@color/black"
 				android:textSize="18dp"
 				android:textStyle="bold"
@@ -72,7 +72,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="0.5"
-				android:text="TextView"
+				android:text="@string/abbrev_name"
 				android:textColor="@color/black" />
 
 		</LinearLayout>
@@ -99,7 +99,7 @@
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="bottom|center_horizontal"
-			android:text="TextView"
+			android:text="@string/crypto_price"
 			android:textColor="@color/black"
 			android:textSize="20dp"
 			android:textStyle="bold" />
@@ -110,7 +110,7 @@
 			android:layout_height="wrap_content"
 			android:layout_weight="0.5"
 			android:gravity="center_horizontal|top"
-			android:text="TextView"
+			android:text="@string/last_behaviour_info"
 			android:textColor="@color/black" />
 	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

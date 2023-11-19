@@ -25,6 +25,9 @@ class HomeFragment : Fragment() {
 		savedInstanceState: Bundle?,
 	): View {
 		_binding = FragmentHomeBinding.inflate(inflater, container, false)
+		_binding?.cryptoListBrn?.setOnClickListener {
+			viewModel.getCoinList()
+		}
 		return binding.root
 	}
 

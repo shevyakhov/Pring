@@ -23,6 +23,7 @@ class App : Application() {
 			modules(SplashModule)
 			modules(HomeModule)
 		}
+
 	}
 
 	companion object {
