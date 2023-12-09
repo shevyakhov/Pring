@@ -74,14 +74,9 @@ class PredictionViewModel(
 	}
 
 	fun predict(): String {
-		val increment = currentCoinPrices.value.mapIndexed { index, doubles ->
-			if (index != 0) {
-				doubles.component2() > currentCoinPrices.value[index - 1][1]
-			} else
-				true
-		}
-		val prediction = increment.count { it } / increment.size.toDouble() >= 0.5
+		val size = currentCoinPrices.value.size
+		val isIncrement = currentCoinPrices.value[size - 1].component2() > currentCoinPrices.value[size - 2].component2()
 
-		return if (prediction) "Возрастет" else "Упадет"
+		return if (isIncrement) "Возрастет" else "Упадет"
 	}
 }
