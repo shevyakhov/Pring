@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
 	tools:context=".features.prediction.ui.PredictionFragment">
 
-	<EditText
+	<SearchView
 		android:id="@+id/search_text_field"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+		android:layout_marginEnd="16dp"
 		android:layout_marginStart="16dp"
 		android:layout_marginTop="25dp"
-		android:layout_marginEnd="16dp"
 		android:background="@drawable/search_text_field_style"
 		android:drawableLeft="?android:attr/actionModeWebSearchDrawable"
 		android:drawablePadding="8dp"
@@ -26,57 +26,109 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
-	<LinearLayout
-		android:id="@+id/stats_crypto_info_1"
-		android:layout_width="0dp"
-		android:layout_height="60dp"
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/recyclerViewCoin"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		app:layout_constraintBottom_toTopOf="@id/currentCoinLayout"
+		app:layout_constraintTop_toBottomOf="@id/search_text_field"
+		tools:listitem="@layout/coin_layout_item" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/currentCoinLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
 		android:layout_marginStart="8dp"
 		android:layout_marginTop="20dp"
-		android:layout_marginEnd="8dp"
-		android:gravity="center"
 		android:orientation="horizontal"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/search_text_field">
+		android:visibility="gone"
+		app:layout_constraintBottom_toTopOf="@id/prediction_layout"
+		app:layout_constraintTop_toBottomOf="@id/recyclerViewCoin">
 
 		<ImageView
 			android:id="@+id/crypto_icon_1"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="0.8"
+			android:layout_width="80dp"
+			android:layout_height="80dp"
 			android:padding="10dp"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
 			tools:src="@tools:sample/avatars" />
 
-		<LinearLayout
-			android:layout_width="0dp"
+
+		<TextView
+			android:id="@+id/crypto_full_name_1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:gravity="bottom"
+			android:text="@string/full_name_of_crypto"
+			android:textColor="@color/black"
+			android:textSize="18dp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@id/crypto_icon_1"
+			app:layout_constraintTop_toTopOf="parent"
+			app:lineHeight="16dp" />
+
+		<TextView
+			android:id="@+id/crypto_money"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/full_name_of_crypto"
+			android:textColor="@color/black"
+			android:textSize="38dp"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/crypto_icon_1"
+
+			app:lineHeight="16dp" />
+
+		<TextView
+			android:id="@+id/crypto_increase"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.5"
+			android:text="@string/abbrev_name"
+			android:textColor="@color/black"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/crypto_icon_1" />
+
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<androidx.cardview.widget.CardView
+		android:id="@+id/prediction_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:cardCornerRadius="20dp"
+		android:layout_margin="30dp"
+		android:backgroundTint="@color/material_dynamic_primary90"
+		app:layout_constraintBottom_toTopOf="@id/button_predict"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/recyclerViewCoin">
+
+		<TextView
+			android:id="@+id/prediction"
+			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:layout_weight="1.2"
-			android:gravity="center_vertical"
-			android:orientation="vertical">
+			android:gravity="center"
+			android:textColor="@color/black"
+			android:textSize="40sp"
+			tools:text="@android:string/autofill" />
+	</androidx.cardview.widget.CardView>
 
-			<TextView
-				android:id="@+id/crypto_full_name_1"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:gravity="bottom"
-				android:text="@string/full_name_of_crypto"
-				android:textColor="@color/black"
-				android:textSize="18dp"
-				android:textStyle="bold"
-				app:lineHeight="16dp" />
-
-			<TextView
-				android:id="@+id/crypto_name_1"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_weight="0.5"
-				android:text="@string/abbrev_name"
-				android:textColor="@color/black" />
-
-		</LinearLayout>
-
-	</LinearLayout>
+	<Button
+		android:id="@+id/button_predict"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:backgroundTint="@color/secondary"
+		android:text="@string/predict"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
