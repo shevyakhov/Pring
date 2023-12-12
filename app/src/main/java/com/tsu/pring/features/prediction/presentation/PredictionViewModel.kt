@@ -8,6 +8,7 @@ import com.tsu.pring.libraries.domain.model.CoinChartTimeSpan
 import com.tsu.pring.libraries.domain.repository.CoinRepository
 import com.tsu.pring.libraries.util.Resource
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -18,6 +19,7 @@ class PredictionViewModel(
 	private val repository: CoinRepository,
 ) : ViewModel() {
 
+	val eventFlow = MutableSharedFlow<Unit>()
 	val currentCoin = MutableStateFlow<CoinItem?>(null)
 	val currentCoinPrices = MutableStateFlow<List<List<Double>>>(emptyList())
 	val listFlow = MutableStateFlow<List<CoinItem>>(emptyList())
@@ -34,7 +36,9 @@ class PredictionViewModel(
 
 				is Resource.Loading -> {}
 
-				is Resource.Error   -> {}
+				is Resource.Error   -> {
+					eventFlow.emit(Unit)
+				}
 			}
 		}.launchIn(viewModelScope)
 
@@ -68,7 +72,11 @@ class PredictionViewModel(
 
 					is Resource.Loading -> {}
 
-					is Resource.Error   -> {}
+					is Resource.Error   -> {
+						viewModelScope.launch {
+							eventFlow.emit(Unit)
+						}
+					}
 				}
 			}.launchIn(viewModelScope)
 	}

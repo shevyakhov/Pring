@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,6 +39,10 @@ class PredictionFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		val scope = viewLifecycleOwner.lifecycleScope
+
+		viewModel.eventFlow.onEach {
+			Toast.makeText(requireContext(), "Ошибка сервера", Toast.LENGTH_SHORT).show()
+		}.launchIn(scope)
 
 		val adapter = CoinListAdapter {
 			binding.recyclerViewCoin.visibility = View.GONE

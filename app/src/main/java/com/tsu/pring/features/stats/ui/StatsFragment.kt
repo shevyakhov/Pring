@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -106,6 +107,10 @@ class StatsFragment : Fragment() {
 	}
 
 	private fun observeData() {
+		viewModel.eventFlow.onEach {
+			Toast.makeText(requireContext(), "Ошибка сервера", Toast.LENGTH_SHORT).show()
+		}.launchIn(viewLifecycleOwner.lifecycleScope)
+
 		lifecycleScope.launch {
 			repeatOnLifecycle(Lifecycle.State.STARTED) {
 				viewModel.state.collectLatest { state ->

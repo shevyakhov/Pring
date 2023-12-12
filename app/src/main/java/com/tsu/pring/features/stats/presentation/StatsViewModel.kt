@@ -8,6 +8,7 @@ import com.tsu.pring.libraries.domain.model.CoinChartTimeSpan
 import com.tsu.pring.libraries.domain.repository.CoinRepository
 import com.tsu.pring.libraries.util.Resource
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
@@ -25,6 +26,7 @@ class StatsViewModel(
 		get() = _state
 
 
+	val eventFlow = MutableSharedFlow<Unit>()
 	val currentCoin = MutableStateFlow<CoinItem?>(null)
 	val listFlow = MutableStateFlow<List<CoinItem>>(emptyList())
 	val currentList = MutableStateFlow<List<CoinItem>>(emptyList())
@@ -39,7 +41,11 @@ class StatsViewModel(
 
 				is Resource.Loading -> {}
 
-				is Resource.Error   -> {}
+				is Resource.Error   -> {
+					viewModelScope.launch {
+						eventFlow.emit(Unit)
+					}
+				}
 			}
 		}.launchIn(viewModelScope)
 
@@ -65,7 +71,11 @@ class StatsViewModel(
 
 					is Resource.Loading -> {}
 
-					is Resource.Error   -> {}
+					is Resource.Error   -> {
+						viewModelScope.launch {
+							eventFlow.emit(Unit)
+						}
+					}
 				}
 			}.launchIn(viewModelScope)
 	}
@@ -81,7 +91,11 @@ class StatsViewModel(
 
 				is Resource.Loading -> {}
 
-				is Resource.Error   -> {}
+				is Resource.Error   -> {
+					viewModelScope.launch {
+						eventFlow.emit(Unit)
+					}
+				}
 			}
 		}.launchIn(viewModelScope)
 	}
