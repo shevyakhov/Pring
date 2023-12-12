@@ -11,5 +11,15 @@
 	<string name="abbrev_name">Аббревиатура</string>
 	<string name="crypto_price">Цена</string>
 	<string name="last_behaviour_info">%0.85031</string>
-	
+	<string name="predict">Предсказать</string>
+	<string name="current_price">текущая цена</string>
+	<string name="one_day">1д</string>
+	<string name="seven_day">7д</string>
+	<string name="fourteen_day">2н</string>
+	<string name="thirty_day">1м</string>
+	<string name="sixty_day">2м</string>
+	<string name="price_high_24h">высшая цена за 24 часа</string>
+	<string name="price_low_24h">низшая цена за 24 часа</string>
+	<string name="description">описание</string>
+
 </resources>
