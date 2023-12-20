@@ -104,7 +104,6 @@
 		android:layout_height="wrap_content"
 		app:cardCornerRadius="20dp"
 		android:layout_margin="30dp"
-		android:backgroundTint="@color/material_dynamic_primary90"
 		app:layout_constraintBottom_toTopOf="@id/button_predict"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"

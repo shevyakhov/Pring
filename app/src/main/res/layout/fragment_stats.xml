@@ -54,41 +54,41 @@
 				tools:src="@drawable/ic_launcher_background" />
 
 			<TextView
-				android:textColor="@color/black"
 				android:id="@+id/tv_coin_name"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="8dp"
+				android:textColor="@color/black"
 				app:layout_constraintStart_toEndOf="@id/coin_icon"
 				app:layout_constraintTop_toTopOf="parent"
 				tools:text="Bitcoin" />
 
 			<TextView
-				android:textColor="@color/black"
 				android:id="@+id/tv_coin_symbol"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="8dp"
+				android:textColor="@color/black"
 
 				app:layout_constraintStart_toEndOf="@id/coin_icon"
 				app:layout_constraintTop_toBottomOf="@id/tv_coin_name"
 				tools:text="btc" />
 
 			<TextView
-				android:textColor="@color/black"
 				android:id="@+id/tv_current_price_label"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/current_price"
+				android:textColor="@color/black"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
 
 			<TextView
-				android:textColor="@color/black"
 				android:id="@+id/tv_current_price"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="4dp"
+				android:textColor="@color/black"
 
 				app:layout_constraintBottom_toTopOf="@+id/divider"
 				app:layout_constraintEnd_toEndOf="parent"
@@ -114,72 +114,47 @@
 			<RadioGroup
 				android:id="@+id/radio_group"
 				android:layout_width="match_parent"
-				android:textColor="@color/black"
 				android:layout_height="wrap_content"
 				android:checkedButton="@id/radio_button_7"
 				android:gravity="center"
 				android:orientation="horizontal"
+				android:textColor="@color/black"
 				app:layout_constraintTop_toBottomOf="@id/lineChart">
 
 				<RadioButton
-					android:textColor="@color/black"
 					android:id="@+id/radio_button_1"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginHorizontal="8dp"
-					android:text="@string/one_day" />
+					android:text="@string/one_day"
+					android:textColor="@color/black" />
 
 				<RadioButton
-					android:textColor="@color/black"
 					android:id="@+id/radio_button_7"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginHorizontal="8dp"
-					android:text="@string/seven_day" />
-
-				<RadioButton
-					android:textColor="@color/black"
-
-					android:id="@+id/radio_button_14"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="8dp"
-					android:text="@string/fourteen_day" />
-
-				<RadioButton
-					android:id="@+id/radio_button_30"
-					android:layout_width="wrap_content"
-					android:textColor="@color/black"
-					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="8dp"
-					android:text="@string/thirty_day" />
-
-				<RadioButton
-					android:id="@+id/radio_button_60"
-					android:textColor="@color/black"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="8dp"
-					android:text="@string/sixty_day" />
+					android:text="@string/seven_day"
+					android:textColor="@color/black" />
 			</RadioGroup>
 
 			<TextView
-				android:textColor="@color/black"
 				android:id="@+id/tv_high_24h_label"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="8dp"
 				android:text="@string/price_high_24h"
+				android:textColor="@color/black"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/radio_group" />
 
 			<TextView
-				android:textColor="@color/black"
 				android:id="@+id/tv_low_24h_label"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="8dp"
 				android:text="@string/price_low_24h"
+				android:textColor="@color/black"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/radio_group" />
 
@@ -193,22 +168,22 @@
 				app:layout_constraintTop_toBottomOf="@+id/tv_high_24h_label" />
 
 			<TextView
-				android:textColor="@color/black"
 				android:id="@+id/tv_high_24h"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="8dp"
+				android:textColor="@color/black"
 
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/divider_for_price"
 				tools:text="$21607" />
 
 			<TextView
-				android:textColor="@color/black"
 				android:id="@+id/tv_low_24h"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="8dp"
+				android:textColor="@color/black"
 
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/divider_for_price"

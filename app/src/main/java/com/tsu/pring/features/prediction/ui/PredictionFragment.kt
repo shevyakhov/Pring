@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -73,6 +74,11 @@ class PredictionFragment : Fragment() {
 		binding.recyclerViewCoin.layoutManager = LinearLayoutManager(requireContext())
 		binding.recyclerViewCoin.adapter = adapter
 
+		viewModel.currentCoin.onEach {
+			binding.prediction.text = ""
+			binding.buttonPredict.isVisible = it != null
+			binding.predictionLayout.isVisible = it != null
+		}.launchIn(scope)
 		binding.buttonPredict.setOnClickListener {
 			binding.prediction.text = viewModel.predict()
 		}

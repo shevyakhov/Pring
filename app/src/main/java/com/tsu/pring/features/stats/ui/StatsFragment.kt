@@ -81,6 +81,14 @@ class StatsFragment : Fragment() {
 				append("$")
 			}
 			binding.tvCoinSymbol.text = it?.symbol
+
+			it?.id?.let { id ->
+				when (binding.radioGroup.checkedRadioButtonId) {
+					binding.radioButton1.id -> viewModel.setCoinChartTimeSpan(1, id)
+					binding.radioButton7.id -> viewModel.setCoinChartTimeSpan(7, id)
+				}
+			}
+
 		}.launchIn(scope)
 		binding.rv.layoutManager = LinearLayoutManager(requireContext())
 		binding.rv.adapter = adapter
@@ -126,11 +134,8 @@ class StatsFragment : Fragment() {
 			with(binding) {
 				radioGroup.setOnCheckedChangeListener { _, checkedId ->
 					when (checkedId) {
-						radioButton1.id  -> viewModel.setCoinChartTimeSpan(1, item.id)
-						radioButton7.id  -> viewModel.setCoinChartTimeSpan(7, item.id)
-						radioButton14.id -> viewModel.setCoinChartTimeSpan(14, item.id)
-						radioButton30.id -> viewModel.setCoinChartTimeSpan(30, item.id)
-						radioButton60.id -> viewModel.setCoinChartTimeSpan(60, item.id)
+						radioButton1.id -> viewModel.setCoinChartTimeSpan(1, item.id)
+						radioButton7.id -> viewModel.setCoinChartTimeSpan(7, item.id)
 					}
 				}
 			}

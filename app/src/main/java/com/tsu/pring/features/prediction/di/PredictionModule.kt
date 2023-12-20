@@ -30,6 +30,6 @@ val PredictionModule = module {
 	}
 	factory<CoinRepository> { CoinRepositoryImpl(get()) }
 	viewModel {
-		PredictionViewModel(router = get(), repository = get())
+		PredictionViewModel(router = get(), repository = get(), localRepository = get())
 	}
 }

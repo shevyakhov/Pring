@@ -3,6 +3,7 @@ package com.tsu.pring.application
 import android.app.Application
 import com.tsu.pring.features.prediction.di.PredictionModule
 import com.tsu.pring.libraries.modules.AppModule
+import com.tsu.pring.libraries.modules.DataModule
 import com.tsu.pring.libraries.modules.HomeModule
 import com.tsu.pring.libraries.modules.MainFragmentModule
 import com.tsu.pring.libraries.modules.RouterModule
@@ -26,6 +27,7 @@ class App : Application() {
 			modules(HomeModule)
 			modules(PredictionModule)
 			modules(statsModule)
+			modules(DataModule)
 		}
 
 	}

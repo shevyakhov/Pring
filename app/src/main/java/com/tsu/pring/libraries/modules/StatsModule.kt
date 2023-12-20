@@ -8,7 +8,8 @@ val statsModule = module {
 	viewModel {
 		StatsViewModel(
 			repository = get(),
-			router = get()
+			router = get(),
+			localRepository = get()
 		)
 	}
 }
