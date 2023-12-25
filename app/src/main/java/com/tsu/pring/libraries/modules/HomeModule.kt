@@ -9,7 +9,8 @@ val HomeModule = module {
 	viewModel {
 		HomeViewModel(
 			router = get(),
-			restWorker = get(),
+			get(),
+			get()
 		)
 	}
 }
