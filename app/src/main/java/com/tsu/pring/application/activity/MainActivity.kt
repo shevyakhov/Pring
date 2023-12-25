@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
 		navigatorHolder.setNavigator(navigator)
-		viewModel.getCoinList()
 		viewModel.openMainRoot()
 	}
 

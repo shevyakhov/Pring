@@ -11,7 +11,7 @@ interface CoinRestInterface {
 	// Получение списка криптовалют
 	@GET(COINS_LIST_PATH)
 	suspend fun getCoins(
-		@Header("X-RapidAPI-Key") key: String = "CG-GUNmvAdKnYxjgexwQ3ugK2bw",
+		@Header("X-RapidAPI-Key") key: String = "CG-trhtjr3XVmib3CduHbLHHwwv",
 		@Header("X-RapidAPI-Host") host: String = "coingecko.p.rapidapi.com",
 	): Response<List<CoinGet>>
 

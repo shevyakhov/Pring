@@ -129,7 +129,7 @@ class StatsFragment : Fragment() {
 		}
 	}
 
-	private fun selectTimeSpan(item: CoinItem) {
+	private fun selectTimeSpan(item: CoinItem): String {
 		if (!item.id.isNullOrEmpty()) {
 			with(binding) {
 				radioGroup.setOnCheckedChangeListener { _, checkedId ->
@@ -140,6 +140,7 @@ class StatsFragment : Fragment() {
 				}
 			}
 		}
+		return ""
 	}
 
 	private fun displayLineChart(chartData: Pair<List<String>, List<Entry>>) {

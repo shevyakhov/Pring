@@ -9,14 +9,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tsu.pring.databinding.CoinLayoutItemBinding
 import com.tsu.pring.libraries.data.remote.dto.coins.CoinItem
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.reflect.KSuspendFunction1
 
-class CoinListAdapter(
-	private val itemClick: (id: CoinItem) -> Unit,
-) : ListAdapter<CoinItem, CoinListAdapter.FoodListHolder>(FoodListDiffCallback) {
+class ListListAdapter(
+	private val itemClick: KSuspendFunction1<CoinItem, Double>,
+) : ListAdapter<CoinItem, ListListAdapter.ListHolder>(FoodListDiffCallback) {
 
-	inner class FoodListHolder(
+	inner class ListHolder(
 		private val binding: CoinLayoutItemBinding,
-		private val itemClick: (id: CoinItem) -> Unit,
+		private val itemClick: KSuspendFunction1<CoinItem, Double>,
 	) : RecyclerView.ViewHolder(binding.root) {
 
 		fun bind(item: CoinItem) {
@@ -34,20 +39,26 @@ class CoinListAdapter(
 					Glide.with(root).load(item.image).into(cryptoIcon1)
 				}
 				root.setOnClickListener {
-					itemClick.invoke(item)
+					if (item.currentPrice.toString().toDouble() == 0.0)
+						CoroutineScope(Dispatchers.IO).launch {
+							val text = itemClick.invoke(item).toString()
+							withContext(Dispatchers.Main) {
+								binding.cryptoPrice1.text = "$ $text"
+							}
+						}
 				}
 			}
 
 		}
 	}
 
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodListHolder {
+	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListHolder {
 		val view = LayoutInflater.from(parent.context)
 		val binding = CoinLayoutItemBinding.inflate(view, parent, false)
-		return FoodListHolder(binding, itemClick)
+		return ListHolder(binding, itemClick)
 	}
 
-	override fun onBindViewHolder(holder: FoodListHolder, position: Int) {
+	override fun onBindViewHolder(holder: ListHolder, position: Int) {
 		holder.bind(getItem(position))
 	}
 

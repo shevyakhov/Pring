@@ -40,5 +40,5 @@ val AppModule = module {
 
 	single { RestWorker() }
 
-	viewModel { MainActivityViewModel(navigator = get(), repository = get(), localRepository = get()) }
+	viewModel { MainActivityViewModel(navigator = get()) }
 }

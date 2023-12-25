@@ -44,5 +44,14 @@
 			android:text="@string/abbrev_name"
 			android:textColor="@color/black" />
 
+		<TextView
+			android:id="@+id/crypto_price_1"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.5"
+			android:gravity="end"
+			android:text="@string/abbrev_name"
+			android:textColor="@color/green" />
+
 	</LinearLayout>
 </LinearLayout>

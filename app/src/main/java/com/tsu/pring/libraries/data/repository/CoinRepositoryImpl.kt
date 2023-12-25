@@ -1,14 +1,16 @@
 package com.tsu.pring.libraries.data.repository
 
-import com.tsu.pring.libraries.domain.repository.CoinRepository
-import com.tsu.pring.libraries.util.Resource
 import com.tsu.pring.libraries.data.remote.ApiService
 import com.tsu.pring.libraries.data.remote.dto.coins.CoinDetail
 import com.tsu.pring.libraries.data.remote.dto.coins.CoinMarketChart
 import com.tsu.pring.libraries.data.remote.dto.markets.Exchange
 import com.tsu.pring.libraries.data.remote.dto.search.Search
+import com.tsu.pring.libraries.domain.repository.CoinRepository
+import com.tsu.pring.libraries.util.Resource
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 
 class CoinRepositoryImpl(
 	private val apiService: ApiService,
@@ -43,6 +45,11 @@ class CoinRepositoryImpl(
 			emit(Resource.Error(message = e.localizedMessage ?: "An error occurred!"))
 		}
 	}
+
+	override suspend fun getMarketChartResult(id: String, day: Int): CoinMarketChart =
+		withContext(Dispatchers.IO) {
+			apiService.getMarketCharts(id, days = day)
+		}
 
 	override fun getCoinDetail(id: String): Flow<Resource<CoinDetail>> = flow {
 		emit(Resource.Loading())
