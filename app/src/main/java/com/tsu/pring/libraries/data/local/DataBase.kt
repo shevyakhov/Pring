@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(
-	entities = [CoinEntity::class],
+	entities = [CoinEntity::class, TrendingCoinEntity::class],
 	version = 1,
 	exportSchema = false
 )

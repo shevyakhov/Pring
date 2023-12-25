@@ -13,4 +13,10 @@ interface CoinItemDao {
 
 	@Insert(onConflict = OnConflictStrategy.IGNORE)
 	fun insertCoinItems(coinEntities: CoinEntity)
+
+	@Query("SELECT * FROM tcoin_items")
+	fun getAllTrendingCoinItems(): List<TrendingCoinEntity>
+
+	@Insert(onConflict = OnConflictStrategy.IGNORE)
+	fun insertTrendingCoinItems(coinEntities: TrendingCoinEntity)
 }

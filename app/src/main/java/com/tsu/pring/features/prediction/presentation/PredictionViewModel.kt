@@ -70,10 +70,13 @@ class PredictionViewModel(
 			}
 	}
 
-	fun searchCoin(it: CoinItem) = viewModelScope.launch {
-		currentCoin.value = it
-		getAllData(it.id ?: return@launch)
-		currentList.value = listFlow.value.take(300)
+	fun searchCoin(it: CoinItem) {
+		viewModelScope.launch {
+			currentCoin.value = it
+			getAllData(it.id ?: return@launch)
+			currentList.value = listFlow.value.take(300)
+
+		}
 	}
 
 	fun getAllData(id: String) {
@@ -96,9 +99,13 @@ class PredictionViewModel(
 	}
 
 	fun predict(): String {
-		val size = currentCoinPrices.value.size
-		val isIncrement = currentCoinPrices.value[size - 1].component2() > currentCoinPrices.value[size - 2].component2()
+		return try {
+			val size = currentCoinPrices.value.size
+			val isIncrement = currentCoinPrices.value[size - 1].component2() > currentCoinPrices.value[size - 2].component2()
 
-		return if (isIncrement) "Возрастет" else "Упадет"
+			if (isIncrement) "Возрастет" else "Упадет"
+		} catch (_: Exception) {
+			"Упадет"
+		}
 	}
 }
