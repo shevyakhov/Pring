@@ -1,19 +1,18 @@
 package com.tsu.pring.data.rest
 
 import android.util.Log
-import com.tsu.pring.data.model.CoinGet
 import com.tsu.pring.features.common.COIN_LIST_DETERMINANT
+import com.tsu.pring.libraries.data.remote.dto.coins.CoinItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Response
 
 class RestWorker {
 
-    private suspend fun syncCoinsList(rest: ApiCoin): List<CoinGet> {
-        return rest.checkResponse(rest.api.getCoins())
+    private suspend fun syncCoinsList(rest: ApiCoin): List<CoinItem> {
+        return rest.api.getCoinList()
     }
 
-    suspend fun <T> doWork(coinFunDeterminant: String): Result<List<CoinGet>?> = withContext(Dispatchers.IO) {
+    suspend fun <T> doWork(coinFunDeterminant: String): Result<List<CoinItem>?> = withContext(Dispatchers.IO) {
         try {
 
             val request = when (coinFunDeterminant) {
